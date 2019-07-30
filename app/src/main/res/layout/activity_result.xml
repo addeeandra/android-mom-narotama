@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/white"
+                app:navigationIcon="@drawable/ic_arrow_left_white"
+                app:title="@string/title_result"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp">
+
+            <EditText
+                    android:id="@+id/et_result_nim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:inputType="number"
+                    android:background="@null"
+                    android:textSize="32sp"
+                    android:textColor="#333"
+                    android:textStyle="bold"
+                    android:hint="Tulis NIM"
+                    tools:text="04316034"/>
+
+            <TextView
+                    android:id="@+id/tv_result_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    tools:text="Ahmad Bagus Aditya Chandra"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="Pelanggaran"/>
+
+            <TextView
+                    android:id="@+id/tv_result_violation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="TIDAK MEMBAWA DASI"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Reward"/>
+
+            <TextView
+                    android:id="@+id/tv_result_reward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="2 SABUN + 2 SHAMPO"/>
+
+            <Button
+                    android:id="@+id/btn_result_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="48dp"
+                    android:text="Kirim"
+                    android:background="@drawable/bg_primary_dull"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

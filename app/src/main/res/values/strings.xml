@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MOM Narotama</string>
+
+    <string name="title_category">Pilih Kategori</string>
+    <string name="title_violation">Pilih Pelanggaran</string>
+    <string name="title_result">Detil Pelanggaran</string>
+    <string name="title_other">Kirim Manual</string>
+</resources>
