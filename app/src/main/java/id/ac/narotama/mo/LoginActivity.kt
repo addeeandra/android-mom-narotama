@@ -14,8 +14,7 @@ class LoginActivity : AppActivity(), APIEndpoint.Noticable {
 
     }
 
-    override val layoutId: Int
-        get() = R.layout.activity_login
+    override val layoutId: Int = R.layout.activity_login
 
     private val mSharedPreferencse by lazy {
         getSharedPreferences(
@@ -35,11 +34,15 @@ class LoginActivity : AppActivity(), APIEndpoint.Noticable {
     }
 
     private fun showLoading() {
-
+        et_login_nim.isEnabled = false
+        et_login_password.isEnabled = false
+        btn_login_submit.isEnabled = false
     }
 
     private fun hideLoading() {
-
+        et_login_nim.isEnabled = true
+        et_login_password.isEnabled = true
+        btn_login_submit.isEnabled = true
     }
 
     private fun hasLoggedIn(): Boolean {
@@ -69,8 +72,10 @@ class LoginActivity : AppActivity(), APIEndpoint.Noticable {
             hideLoading()
 
             results?.firstOrNull()?.let {
-                setLoggedIn()
-                CategoryActivity.launchClearTask(this@LoginActivity)
+                if (it.code == 200) {
+                    setLoggedIn()
+                    CategoryActivity.launchClearTask(this@LoginActivity)
+                } else showMessage("Login gagal")
             } ?: showMessage("Login gagal")
         }
     }

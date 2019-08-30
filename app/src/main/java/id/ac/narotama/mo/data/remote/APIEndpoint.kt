@@ -27,7 +27,7 @@ interface APIEndpoint {
     @GET("get_pelanggaran.php")
     suspend fun getViolationList(@Query("id") categoryId: String): List<Violation>
 
-    @GET("get_where_mahasiswa.php")
+    @GET("get_where_nama.php")
     suspend fun getStudentByName(@Query("nama") name: String): List<Student>
 
     @FormUrlEncoded

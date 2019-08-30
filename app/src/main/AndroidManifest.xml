@@ -24,6 +24,7 @@
         <activity android:name=".CategoryActivity"/>
         <activity android:name=".ViolationActivity"/>
         <activity android:name=".ResultActivity"/>
+        <activity android:name=".SearchActivity"/>
         <activity android:name=".OtherActivity"/>
 
     </application>

@@ -9,28 +9,60 @@
             android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_arrow_left_white"
                 app:title="Cari Mahasiswa"
                 app:titleTextColor="@color/white" />
 
-        <EditText
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ketik nama mahasiswa"
-                android:padding="16dp"
-                android:textColor="@color/white_transparent"
-                android:textColorHint="white" />
+                android:orientation="horizontal">
+
+            <EditText
+                    android:id="@+id/et_search_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Ketik nama mahasiswa"
+                    android:imeOptions="actionSearch"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white_transparent" />
+
+            <ImageView
+                    android:id="@+id/btn_search_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_search_white" />
+
+        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_search_student"
+    <ListView
+            android:id="@+id/lv_search_student"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/clp_search"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

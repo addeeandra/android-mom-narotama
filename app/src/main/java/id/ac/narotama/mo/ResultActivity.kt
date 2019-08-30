@@ -11,8 +11,8 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.integration.android.IntentIntegrator
 import id.ac.narotama.mo.data.model.QRData
 import id.ac.narotama.mo.data.remote.APIEndpoint
-import id.ac.narotama.mo.data.remote.response.Violation
 import id.ac.narotama.mo.data.remote.response.Student
+import id.ac.narotama.mo.data.remote.response.Violation
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlinx.coroutines.launch
 import java.util.*
@@ -74,6 +74,18 @@ class ResultActivity : AppActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode != Activity.RESULT_OK) finish()
+
+        if (requestCode == 22) {
+            if (resultCode != Activity.RESULT_OK || data == null) finish()
+
+            showData(QRData(
+                data?.getStringExtra("NIM") ?: "",
+                data?.getStringExtra("NAME") ?: "",
+                data?.getStringExtra("GROUP") ?: ""
+            ).also { mStudent = Student(nim = it.nim, nama = it.name, kelompok = it.group) })
+
+            return
+        }
 
         IntentIntegrator.parseActivityResult(requestCode, resultCode, data)?.let { intent ->
             intent.contents?.let { rawData ->
@@ -138,7 +150,26 @@ class ResultActivity : AppActivity() {
                     .initiateScan()
             }
             .setPositiveButton("Manual") { dialog, _ ->
+                dialog.dismiss()
+                showManualChooserDialog()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun showManualChooserDialog() {
+        AlertDialog
+            .Builder(this)
+            .setTitle("Manual")
+            .setMessage("Pilih manual menggunakan NIM atau pencarian berdasarkan nama.")
+            .setNeutralButton("Batalkan") { _, _ -> finish() }
+            .setNegativeButton("NIM") { dialog, _ ->
                 shouldCheckNim = true
+                dialog.dismiss()
+            }
+            .setPositiveButton("Pencarian") { dialog, _ ->
+                shouldCheckNim = false
+                SearchActivity.launch(this@ResultActivity, 22)
                 dialog.dismiss()
             }
             .setCancelable(false)
