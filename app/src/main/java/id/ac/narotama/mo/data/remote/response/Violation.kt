@@ -16,7 +16,7 @@ data class Violation(
     @field:SerializedName("id")
     val id: String? = null,
 
-    @field:SerializedName("punisment")
+    @field:SerializedName("punishment")
     val punisment: String? = null
 
 ) : Serializable

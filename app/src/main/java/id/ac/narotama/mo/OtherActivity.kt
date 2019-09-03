@@ -72,7 +72,7 @@ class OtherActivity : AppActivity() {
 
             hideLoading()
 
-            results?.firstOrNull()?.let { data ->
+            results?.let { data ->
                 tv_other_name.text = data.nama
                 tv_other_team.text = data.kelompok
             } ?: showMessage("Mahasiswa dgn NIM '$nim' tidak ditemukan")
@@ -91,16 +91,14 @@ class OtherActivity : AppActivity() {
 
         launch {
             showLoading()
-            val results = networkApi.postOtherRecord(nim, violation, punishment).data
+            val results = networkApi.postOtherRecord(nim, violation, punishment)
             hideLoading()
 
-            results?.firstOrNull()?.let {
-                if (it.notice == "success") {
-                    toast(it.message ?: "Success")
-                    CategoryActivity.launchClearTask(this@OtherActivity)
-                } else {
-                    toast(it.message ?: "Not success")
-                }
+            if (results.code == 200) {
+                toast(results.message ?: "Success")
+                CategoryActivity.launchClearTask(this@OtherActivity)
+            } else {
+                toast(results.message ?: "Not success")
             }
         }
     }

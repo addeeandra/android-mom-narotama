@@ -19,7 +19,7 @@ interface APIEndpoint {
     }
 
     @GET("mahasiswa/by-nim/{nim}")
-    suspend fun getStudentList(@Path("nim") nim: String): DataResponse<List<Student>>
+    suspend fun getStudentList(@Path("nim") nim: String): DataResponse<Student>
 
     @GET("kategori")
     suspend fun getCategoryList(): DataResponse<List<Category>>

@@ -26,7 +26,8 @@ class LoginActivity : AppActivity(), APIEndpoint.Noticable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (hasLoggedIn()) CategoryActivity.launchClearTask(this)
+//        if (hasLoggedIn()) CategoryActivity.launchClearTask(this)
+        CategoryActivity.launchClearTask(this@LoginActivity)
 
         btn_login_submit.setOnClickListener {
             postLogin()

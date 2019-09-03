@@ -186,7 +186,7 @@ class ResultActivity : AppActivity() {
 
             hideLoading()
 
-            results?.firstOrNull()?.let { data ->
+            results?.let { data ->
                 qrdata = QRData(nim, data.nama ?: "-", data.kelompok ?: "-")
                 qrdata?.let {
                     mStudent = data
@@ -204,18 +204,16 @@ class ResultActivity : AppActivity() {
                 networkApi.postRecord(
                     student.nim ?: "",
                     violation.id ?: ""
-                ).data
+                )
             }
 
             hideLoading()
 
-            results?.firstOrNull()?.let {
-                if (it.notice == "success") {
-                    toast(it.message ?: "Success")
-                    CategoryActivity.launchClearTask(this@ResultActivity)
-                } else {
-                    toast(it.message ?: "Not success")
-                }
+            if (results?.code == 200) {
+                toast(results.message ?: "Success")
+                CategoryActivity.launchClearTask(this@ResultActivity)
+            } else {
+                toast(results?.message ?: "Not success")
             }
         }
     }
