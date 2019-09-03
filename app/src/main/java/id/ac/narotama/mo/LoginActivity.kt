@@ -66,7 +66,7 @@ class LoginActivity : AppActivity(), APIEndpoint.Noticable {
 
         launch {
             val results = APIEndpoint.Fallback(this@LoginActivity) {
-                networkApi.postLogin(username, password)
+                networkApi.postLogin(username, password).data
             }
 
             hideLoading()

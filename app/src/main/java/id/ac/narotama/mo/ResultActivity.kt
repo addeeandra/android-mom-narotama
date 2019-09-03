@@ -181,7 +181,7 @@ class ResultActivity : AppActivity() {
             showLoading()
 
             val results = APIEndpoint.Fallback(this@ResultActivity) {
-                networkApi.getStudentList(nim)
+                networkApi.getStudentList(nim).data
             }
 
             hideLoading()
@@ -204,7 +204,7 @@ class ResultActivity : AppActivity() {
                 networkApi.postRecord(
                     student.nim ?: "",
                     violation.id ?: ""
-                )
+                ).data
             }
 
             hideLoading()

@@ -10,10 +10,7 @@ data class Violation(
     @field:SerializedName("pelanggaran")
     val pelanggaran: String? = null,
 
-    @field:SerializedName("tgl_update")
-    val tglUpdate: String? = null,
-
-    @field:SerializedName("id_category")
+    @field:SerializedName("id_kategori")
     val idCategory: String? = null,
 
     @field:SerializedName("id")

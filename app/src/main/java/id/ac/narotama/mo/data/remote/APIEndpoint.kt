@@ -18,36 +18,36 @@ interface APIEndpoint {
 
     }
 
-    @GET("get_mahasiswa.php")
-    suspend fun getStudentList(@Query("nim") nim: String): List<Student>
+    @GET("mahasiswa/by-nim/{nim}")
+    suspend fun getStudentList(@Path("nim") nim: String): DataResponse<List<Student>>
 
-    @GET("get_category.php")
-    suspend fun getCategoryList(): List<Category>
+    @GET("kategori")
+    suspend fun getCategoryList(): DataResponse<List<Category>>
 
-    @GET("get_pelanggaran.php")
-    suspend fun getViolationList(@Query("id") categoryId: String): List<Violation>
+    @GET("pelanggaran/{id}")
+    suspend fun getViolationList(@Path("id") categoryId: String): DataResponse<List<Violation>>
 
-    @GET("get_where_nama.php")
-    suspend fun getStudentByName(@Query("nama") name: String): List<Student>
-
-    @FormUrlEncoded
-    @POST("post_login.php")
-    suspend fun postLogin(@Field("nim") nim: String, @Field("password") password: String): List<Login>
+    @GET("mahasiswa/by-nama/{nama}")
+    suspend fun getStudentByName(@Path("nama") name: String): DataResponse<List<Student>>
 
     @FormUrlEncoded
-    @POST("post_pencatatan.php")
+    @POST("masuk")
+    suspend fun postLogin(@Field("nim") nim: String, @Field("password") password: String): DataResponse<List<Login>>
+
+    @FormUrlEncoded
+    @POST("punishment")
     suspend fun postRecord(
         @Field("nim") nim: String,
         @Field("pelanggaran") punishmentId: String
-    ): List<RecordResult>
+    ): DataResponse<List<RecordResult>>
 
     @FormUrlEncoded
-    @POST("post_pencatatan_lainnya.php")
+    @POST("punishment-lainnya")
     suspend fun postOtherRecord(
         @Field("nim") nim: String,
         @Field("pelanggaran") violation: String,
         @Field("rewards") punishment: String
-    ): List<RecordResult>
+    ): DataResponse<List<RecordResult>>
 
     interface Noticable {
 

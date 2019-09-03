@@ -67,7 +67,7 @@ class OtherActivity : AppActivity() {
             showLoading()
 
             val results = APIEndpoint.Fallback(this@OtherActivity) {
-                networkApi.getStudentList(nim)
+                networkApi.getStudentList(nim).data
             }
 
             hideLoading()
@@ -91,10 +91,10 @@ class OtherActivity : AppActivity() {
 
         launch {
             showLoading()
-            val results = networkApi.postOtherRecord(nim, violation, punishment)
+            val results = networkApi.postOtherRecord(nim, violation, punishment).data
             hideLoading()
 
-            results.firstOrNull()?.let {
+            results?.firstOrNull()?.let {
                 if (it.notice == "success") {
                     toast(it.message ?: "Success")
                     CategoryActivity.launchClearTask(this@OtherActivity)

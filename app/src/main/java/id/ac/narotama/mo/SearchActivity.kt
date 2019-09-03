@@ -91,7 +91,7 @@ class SearchActivity : AppActivity() {
         launch {
             showLoading()
             mStudents =
-                APIEndpoint.Fallback(this@SearchActivity) { networkApi.getStudentByName(search) }
+                APIEndpoint.Fallback(this@SearchActivity) { networkApi.getStudentByName(search).data }
                     ?: listOf()
             hideLoading()
 

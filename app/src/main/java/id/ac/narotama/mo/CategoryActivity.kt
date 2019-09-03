@@ -70,7 +70,7 @@ class CategoryActivity : AppActivity() {
     private fun fetchCategories() {
         launch {
             mCategories =
-                APIEndpoint.Fallback(this@CategoryActivity) { networkApi.getCategoryList() }
+                APIEndpoint.Fallback(this@CategoryActivity) { networkApi.getCategoryList().data }
                     ?: listOf()
 
             mCategoryAdapter.clear()

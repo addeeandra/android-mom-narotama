@@ -54,7 +54,7 @@ class ViolationActivity : AppActivity() {
     private fun fetchViolationList(categoryId: String) {
         launch {
             mViolations = APIEndpoint.Fallback(this@ViolationActivity) {
-                networkApi.getViolationList(categoryId)
+                networkApi.getViolationList(categoryId).data
             } ?: listOf()
 
             mViolationAdapter.clear()

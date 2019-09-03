@@ -7,13 +7,10 @@ import javax.annotation.Generated
 @Generated("com.robohorse.robopojogenerator")
 data class Category(
 
-    @field:SerializedName("tgl_update")
-    val tglUpdate: String? = null,
-
-    @field:SerializedName("nama")
+    @field:SerializedName("kategori_pelanggaran")
     val nama: String? = null,
 
-    @field:SerializedName("id")
+    @field:SerializedName("id_kategori")
     val id: String? = null
 
 ) : Serializable

@@ -10,7 +10,7 @@ object NetworkUtil {
 
     fun getRetrofit() = Retrofit
         .Builder()
-        .baseUrl("http://80.211.184.148/pku/")
+        .baseUrl("http://sys.mom.narotama.ac.id/api/@pku/")
         .client(OkHttpClient
             .Builder()
             .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
